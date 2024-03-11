@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>employees</title>
+</head>
+
+<body>
+    <style>
+        .grid__row {
+            display: flex;
+        }
+
+        .grid {
+            width: 70%;
+            margin: 0 auto;
+            margin-top: 70px;
+            margin-bottom: 40px;
+        }
+
+        div {
+            border: solid white;
+            width: 100%;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+        }
+
+        button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            width: 100px;
+            height: 30px;
+            align-self: center;
+        }
+    </style>
+    <div class='grid'>
+        <div class="grid__row">
+            <div>
+                ID
+            </div>
+            <div>
+                Name
+            </div>
+            <div>
+                Position
+            </div>
+            <div>
+                Salary
+            </div>
+        </div>
+        {% for employer in employees %}
+            <div class="grid__row">
+                <div>
+                    {{employer[0]}}
+                </div>
+                <div>
+                    {{employer[1]}}
+                </div>
+                <div>
+                    {{employer[2]}}
+                </div>
+                <div>
+                    {{employer[3]}} $
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <form action="/submit" method="post">
+            <input type="text" name="Name" placeholder="Name">
+            <input type="text" name='Position' placeholder="Position">
+            <input type="text" name = 'Salary' placeholder="Salary">
+    
+        <button class="btn" type="submit"></button>
+    </form>
+    <form action="/delete" method= 'post'>
+        <input type="text" name="ID" placeholder="ID of the person you want to delete">
+        <button class="btn" type="submit"></button>
+    </form>
+</body>
+
+</html>
